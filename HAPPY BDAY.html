@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Photo Surprise!</title>
+    <style>
+        body {
+            background-color: #add8e6; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            cursor: pointer;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #ff69b4;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cake {
+            width: 300px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.911); 
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 10px auto;
+            position: relative;
+            z-index: 5;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .message {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500; 
+            text-shadow: 0 0 1px rgba(255,255,255,0.5);
+        }
+        
+        
+      
+        .displayed-photo {
+            position: absolute;
+            max-height: 200px;
+            max-width: 300px;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: rotate(calc(-5deg + 10deg * random()));
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday bb!</h1>
+        
+        <div class="cake">
+            <svg viewBox="0 0 100 100">
+          
+                <rect x="20" y="50" width="60" height="20" fill="#f9c5d1" stroke="#f2789f" stroke-width="0.5"/>
+                <rect x="25" y="40" width="50" height="10" fill="#f2789f" stroke="#f2789f" stroke-width="0.5"/>
+                <rect x="40" y="30" width="3" height="10" fill="#ffd166"/>
+                <rect x="50" y="30" width="3" height="10" fill="#ffd166"/>
+                <rect x="60" y="30" width="3" height="10" fill="#ffd166"/>
+    
+                <path d="M41.5 20 Q42.5 25 43.5 20" fill="none" stroke="#ff9e00" stroke-width="1"/>
+                <path d="M51.5 20 Q52.5 25 53.5 20" fill="none" stroke="#ff9e00" stroke-width="1"/>
+                <path d="M61.5 20 Q62.5 25 63.5 20" fill="none" stroke="#ff9e00" stroke-width="1"/>
+            </svg>
+        </div>
+        <div class="message-box">
+            <div class="message">
+                <p>Hi bb, Good Morning. HAPPY BIRTHDAY sa akong pina ka gwapa na betie soon to be a bb, this is my gift para nimo i hope bisana distance ta ron ma appreciate nimo akong hinimo, i know na ge saput ge hapon ka hangtud karon kay wanakoy chat2 gabie ug na bikil kas ako ge ingon. unta imo nako pasayluon kay bawal2 mag suko2 man sa bday hehe, thank you gat yeyy!. im expressing myy love through this because d man ta lage mag kita no.</p>
+            
+                <p>soon ug maka uli ka or ig bakasyon unta untaunta hatagan tag time sa panahon na mag uban ta, kay d pani mao. for kuan pani bb like 1st part. ilove you bb, sorry sa tanan nimong kaaagi nga uban ko. waman nako na hatag ang ka nindot pero gusto ko na mag uban gihapon ta.</p>
+            
+                <p>nasakitan man ka nahu unta mag ka anam2 tog heal kay mag anam2 pud kog pasaka, like i want to have a change ngaman diay ug ginagmay basta naay change. mao to bb lablab kay kang badodong, wish lash nako para nimo is mag stay healthy, possitive, pretty, good vibes, brayt, and malambingon. unta mag enjoy ka ma buo imo adlaw and ilovveeeeeeeeeeeeeeyouuuuuuu!!!!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+      
+        const photoUrls = [
+            'secret project for/357245918_751419786989707_1498815506532655800_n.jpg',
+            'secret project for/361044464_974589953662721_3289962504816625553_n.jpg',
+            'secret project for/483716347_1681687849404549_7478633680418498495_n.jpg',
+            'secret project for/482939683_1199563195096839_6737949338541187819_n.jpg',
+            'secret project for/483792194_1702307897303054_720750197222812306_n.jpg',
+            'secret project for/483960673_1017368273204713_3885937030680609043_n.jpg',
+            'secret project for/483820976_477438048781091_6468793998470013666_n.jpg.',
+            'secret project for/485261255_543958108746010_5483128468943646314_n.jpg.',
+            'secret project for/385536933_273173532252312_9203653718120508350_n.jpg',
+            'secret project for/421114599_401835482231131_7791129654652981035_n.jpg',
+            'secret project for/440884640_295658116834579_8429973019000477111_n.jpg',
+            'secret project for/440988588_815296477147777_1281145338116731120_n.jpg',
+            'secret project for/453404233_481878594449877_7857376397168475065_n.jpg',
+            'secret project for/462556490_583529650889989_6460639195322390193_n.jpg',
+            'secret project for/462560302_1292957095240147_417661533735107777_n.jpg',
+            'secret project for/462560319_9193219004074774_5207974657406143567_n.jpg',
+            'secret project for/462566866_1109921370384112_4697317996582306313_n.jpg',
+            'secret project for/462575281_1256875708900944_5476309929034861173_n.jpg',
+            'secret project for/462577580_1906349099854681_1008127504246562277_n.jpg', 
+            'secret project for/462583349_1123115659203507_3987538581293411601_n.jpg',
+            'secret project for/462585687_1134153315091992_8172865502773266063_n.jpg',
+            'secret project for/464678140_9125006614227370_7005367073532055354_n.jpg',
+            'secret project for/467715534_606219148569223_2467481328241082953_n.jpg',
+            'secret project for/462585687_1134153315091992_8172865502773266063_n.jpg',
+            'secret project for/467715534_606219148569223_2467481328241082953_n.jpg',
+            'secret project for/467904212_583810940930103_6273312455331681449_n.jpg',
+            'secret project for/471625881_1105925894082360_29364131060421395_n.jpg',
+            'secret project for/472169903_1143913780528563_1599877623325616752_n.jpg',
+            'secret project for/472169903_1143913780528563_1599877623325616752_n.jpg',
+            'secret project for/472300725_505146135936663_5759148937464726320_n.jpg',
+            'secret project for/472300725_604568518945350_7052964223078447212_n.jpg',
+            'secret project for/472300725_604568518945350_7052964223078447212_n.jpg',
+            'secret project for/472380056_618801134077963_3618235520098724738_n.jpg', 
+            'secret project for/472396332_582091254536712_1038386393036983874_n.jpg',
+            'secret project for/472455339_1381026273262695_8564432980794568091_n.jpg',
+            'secret project for/472915836_3010547422427289_5147638592962188989_n.jpg',
+            'secret project for/473051716_641773235182673_7365232309124631009_n.jpg',
+            'secret project for/473084751_1241394253620277_4689859554365862285_n.jpg',
+            'secret project for/473158770_1354761939276388_5274279448507837772_n.jpg',
+            'secret project for/473160182_1169288864766748_2465551162746259784_n.jpg',
+            'secret project for/473170411_468128569698139_359357638476497455_n.jpg',
+            'secret project for/473170411_468128569698139_359357638476497455_n.jpg',
+            'secret project for/473345058_589550433941719_1662626653166509351_n.jpg',
+            'secret project for/473354378_1697295210835720_106869351904571318_n (1).jpg',
+            'secret project for/473354378_1697295210835720_106869351904571318_n.jpg',
+            'secret project for/473375563_959479072388007_2345627324481050546_n.jpg',
+            'secret project for/473417145_1259360625127366_474492443450215469_n.jpg',
+            'secret project for/473444443_1251072152662142_1972086861222000836_n.jpg',
+            'secret project for/473631598_3076532122494314_4458419140420332268_n.jpg',
+            'secret project for/473636265_1116009449829692_5554587517575358860_n.jpg',
+            'secret project for/473647051_919271710275996_7383450750180259453_n.jpg',
+            'secret project for/473649378_1124239772237875_1175727166522609997_n.jpg',
+            'secret project for/473730840_4084808161750040_4659283869458251396_n.jpg',
+            'secret project for/473782711_1250035009434577_8341497438016275193_n.jpg',
+            'secret project for/473807648_1992096294606848_1577745155620826182_n.jpg ',
+            'secret project for/473797323_638388415530297_412800633257247236_n.jpg',
+            'secret project for/473808345_1135608724879537_3874742230181401297_n.jpg',
+            'secret project for/473823603_1913357499072731_7911066051572792263_n.jpg',
+            'secret project for/473898358_602559135856974_6636004816002121584_n.jpg',
+            'secret project for/473898358_629543856197324_3931041269361110881_n.jpg',
+            'secret project for/474077332_1361686094861489_515251861720580283_n.jpg',
+            'secret project for/474118603_1163743492033818_4981969686438369461_n.jpg',
+            'secret project for/474142065_1107925524394824_3094991868032486991_n.jpg',
+            'secret project for/474118603_1163743492033818_4981969686438369461_n.jpg',
+            'secret project for/474152305_637028742212677_5503834501990788118_n.jpg',
+            'secret project for/474155938_3988673281407811_3002578338899370168_n.jpg',
+            'secret project for/474160289_589506843965524_3675365016449250424_n.jpg',
+            'secret project for/474161678_9270640692956000_6625429292919929615_n (1).jpg',
+            'secret project for/474168584_2705717022933390_5221951445431741495_n.jpg',
+            'secret project for/474161678_9270640692956000_6625429292919929615_n.jpg',
+            'secret project for/474390209_966609341610853_4773373815636827697_n.jpg',
+            'secret project for/474615870_1129883888776782_3315053944851874450_n (1).jpg',
+            'secret project for/474615870_1129883888776782_3315053944851874450_n.jpg',
+            'secret project for/474615870_1861193177744048_1026700538298649116_n.jpg',
+            'secret project for/474615870_1861193177744048_1026700538298649116_n.jpg',
+            'secret project for/474745237_623882343470798_3773524905475430882_n.jpg',
+            'secret project for/474771815_1761066681357071_5597569382025522479_n.jpg',
+            'secret project for/474773579_928975982679537_1151562696149438745_n.jpg',
+            'secret project for/474771815_2083887018727647_635824044073281359_n.jpg',
+            'secret project for/474897658_1968341730244055_4326342707151620537_n.jpg',
+            'secret project for/474921907_929710572582468_6528524286017632139_n.jpg',
+         
+
+
+           
+        ];
+       
+        
+        document.body.addEventListener('click', function(e) {
+      
+            if (e.target.classList.contains('displayed-photo')) return;
+            
+        
+            const xPos = Math.random() * (window.innerWidth - 300);
+            const yPos = Math.random() * (window.innerHeight - 200);
+            
+           
+            const rotation = -15 + Math.random() * 30;
+            
+     
+            const randomIndex = Math.floor(Math.random() * photoUrls.length);
+            const randomPhoto = photoUrls[randomIndex];
+            
+            
+            const photoElement = document.createElement('img');
+            photoElement.src = randomPhoto;
+            photoElement.className = 'displayed-photo';
+            photoElement.style.left = `${xPos}px`;
+            photoElement.style.top = `${yPos}px`;
+            photoElement.style.transform = `rotate(${rotation}deg)`;
+            
+            document.body.appendChild(photoElement);
+            
+          
+            let isDragging = false;
+            let offsetX, offsetY;
+            
+            photoElement.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                offsetX = e.clientX - photoElement.getBoundingClientRect().left;
+                offsetY = e.clientY - photoElement.getBoundingClientRect().top;
+                photoElement.style.cursor = 'grabbing';
+                e.preventDefault(); 
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                photoElement.style.left = `${e.clientX - offsetX}px`;
+                photoElement.style.top = `${e.clientY - offsetY}px`;
+            });
+            
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+                photoElement.style.cursor = 'grab';
+            });
+        });
+    </script>
+</body>
+</html>
