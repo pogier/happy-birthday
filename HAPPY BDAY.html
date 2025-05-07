@@ -12,14 +12,15 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             cursor: pointer;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-y: auto;
         }
         
         .container {
             padding: 20px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            min-height: 100vh;
         }
         
         h1 {
@@ -40,7 +41,7 @@
             max-width: 500px;
             margin: 10px auto;
             position: relative;
-            z-index: 5;
+            z-index: 15;
             border: 1px solid rgba(255,255,255,0.3);
             backdrop-filter: blur(2px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -55,8 +56,6 @@
             text-shadow: 0 0 1px rgba(255,255,255,0.5);
         }
         
-        
-      
         .displayed-photo {
             position: absolute;
             max-height: 200px;
@@ -64,8 +63,32 @@
             border: 5px solid white;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             transform: rotate(calc(-5deg + 10deg * random()));
+            z-index: 5;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .music-control i {
+            font-size: 24px;
+            color: #ff69b4;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -73,7 +96,6 @@
         
         <div class="cake">
             <svg viewBox="0 0 100 100">
-          
                 <rect x="20" y="50" width="60" height="20" fill="#f9c5d1" stroke="#f2789f" stroke-width="0.5"/>
                 <rect x="25" y="40" width="50" height="10" fill="#f2789f" stroke="#f2789f" stroke-width="0.5"/>
                 <rect x="40" y="30" width="3" height="10" fill="#ffd166"/>
@@ -87,121 +109,275 @@
         </div>
         <div class="message-box">
             <div class="message">
-                <p>Hi bb, Good Morning. HAPPY BIRTHDAY sa akong pina ka gwapa na betie soon to be a bb, this is my gift para nimo i hope bisana distance ta ron ma appreciate nimo akong hinimo, i know na ge saput ge hapon ka hangtud karon kay wanakoy chat2 gabie ug na bikil kas ako ge ingon. unta imo nako pasayluon kay bawal2 mag suko2 man sa bday hehe, thank you gat yeyy!. im expressing myy love through this because d man ta lage mag kita no.</p>
+                <p>Hi bb, Good Morning. HAPPY BIRTHDAY sa akong pina ka gwapa na bestie soon to be a bb, this is my gift para nimo i hope bisana distance ta ron ma appreciate nimo akong hinimo, i know na ge saput ge hapon ka hangtud karon kay wanakoy chat2 gabie ug na bikil kas ako ge ingon. unta imo nako pasayluon kay bawal2 mag suko2 man sa bday hehe, thank you gat yeyy!. im expressing myy love through this because d man ta lage mag kita no.</p>
             
-                <p>soon ug maka uli ka or ig bakasyon unta untaunta hatagan tag time sa panahon na mag uban ta, kay d pani mao. for kuan pani bb like 1st part. ilove you bb, sorry sa tanan nimong kaaagi nga uban ko. waman nako na hatag ang ka nindot pero gusto ko na mag uban gihapon ta.</p>
+                <p>soon ug maka uli ka or ig bakasyon unta untaunta hatagan tag time sa panahon na mag uban ta, kay d pani mao. for kuan pani bb like 1st part. ilove you bb, sorry sa tanan nimong kaaagi nga uban ko. waman nako na hatag ang ka nindot pero gusto ko na mag uban gihapon ta. ako ni ge tujo na makita nimo ang mga picture kay ganahan baja ka na mag tanaw2 picture labi nag natug nako or mingawon ka nahu bisan kanunay ka masuko heheh, happy bday b, 
+                    unta ganahan kas ako gift nimo ron. abi guro nimo na diko mag hatag message no?, hahahahah, okay rag dika maka hilak ani basta kay nag effort ko para maka himo ra ani ilove you b. pagn finale maning ako gud yiiieeeee labyu. ang ako ra gusto i sulti gajud is lablab ka nahu andalways ka mag stay kung unsa ka nya thank you sa tanan na imo nabuhat para nako ug s=ara s akong kaayohan. 
+                    pasalamat kos ginoo kay ge hatagan kog real life guardian angel kay naaay mo kuan sako para sako kaaayohan ug nay mo uban nako. thank you gat, i will repay you soon sa imo pag antos sako i know maka ingon kag botbot pero basin diay maka uban ka nako magn unwind para ma clear pud na imo mind gud like para ma referesh ba hahaha. and ato i celeb imong belated happy bday kay so luoy na ikaw ana ana man ka ohh "umasa nanaman si inday hahahah" anchus ka luoy gajud 
+                    on this evenign gusto ko na ma happy ka unta ma lipay ka aning letter na ako i hatag sa imo bb iloveyoouuu!.
+             </p>
             
                 <p>nasakitan man ka nahu unta mag ka anam2 tog heal kay mag anam2 pud kog pasaka, like i want to have a change ngaman diay ug ginagmay basta naay change. mao to bb lablab kay kang badodong, wish lash nako para nimo is mag stay healthy, possitive, pretty, good vibes, brayt, and malambingon. unta mag enjoy ka ma buo imo adlaw and ilovveeeeeeeeeeeeeeyouuuuuuu!!!!</p>
             </div>
         </div>
+
     </div>
+
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+    
+   
+    <audio id="bgMusic" loop>
+        <source src="https://github.com/pogier/happy-birthday/raw/main/_%20%20%20%20%20%20%20.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     
     <script>
       
         const photoUrls = [
-            'secret project for/357245918_751419786989707_1498815506532655800_n.jpg',
-            'secret project for/361044464_974589953662721_3289962504816625553_n.jpg',
-            'secret project for/483716347_1681687849404549_7478633680418498495_n.jpg',
-            'secret project for/482939683_1199563195096839_6737949338541187819_n.jpg',
-            'secret project for/483792194_1702307897303054_720750197222812306_n.jpg',
-            'secret project for/483960673_1017368273204713_3885937030680609043_n.jpg',
-            'secret project for/483820976_477438048781091_6468793998470013666_n.jpg.',
-            'secret project for/485261255_543958108746010_5483128468943646314_n.jpg.',
-            'secret project for/385536933_273173532252312_9203653718120508350_n.jpg',
-            'secret project for/421114599_401835482231131_7791129654652981035_n.jpg',
-            'secret project for/440884640_295658116834579_8429973019000477111_n.jpg',
-            'secret project for/440988588_815296477147777_1281145338116731120_n.jpg',
-            'secret project for/453404233_481878594449877_7857376397168475065_n.jpg',
-            'secret project for/462556490_583529650889989_6460639195322390193_n.jpg',
-            'secret project for/462560302_1292957095240147_417661533735107777_n.jpg',
-            'secret project for/462560319_9193219004074774_5207974657406143567_n.jpg',
-            'secret project for/462566866_1109921370384112_4697317996582306313_n.jpg',
-            'secret project for/462575281_1256875708900944_5476309929034861173_n.jpg',
-            'secret project for/462577580_1906349099854681_1008127504246562277_n.jpg', 
-            'secret project for/462583349_1123115659203507_3987538581293411601_n.jpg',
-            'secret project for/462585687_1134153315091992_8172865502773266063_n.jpg',
-            'secret project for/464678140_9125006614227370_7005367073532055354_n.jpg',
-            'secret project for/467715534_606219148569223_2467481328241082953_n.jpg',
-            'secret project for/462585687_1134153315091992_8172865502773266063_n.jpg',
-            'secret project for/467715534_606219148569223_2467481328241082953_n.jpg',
-            'secret project for/467904212_583810940930103_6273312455331681449_n.jpg',
-            'secret project for/471625881_1105925894082360_29364131060421395_n.jpg',
-            'secret project for/472169903_1143913780528563_1599877623325616752_n.jpg',
-            'secret project for/472169903_1143913780528563_1599877623325616752_n.jpg',
-            'secret project for/472300725_505146135936663_5759148937464726320_n.jpg',
-            'secret project for/472300725_604568518945350_7052964223078447212_n.jpg',
-            'secret project for/472300725_604568518945350_7052964223078447212_n.jpg',
-            'secret project for/472380056_618801134077963_3618235520098724738_n.jpg', 
-            'secret project for/472396332_582091254536712_1038386393036983874_n.jpg',
-            'secret project for/472455339_1381026273262695_8564432980794568091_n.jpg',
-            'secret project for/472915836_3010547422427289_5147638592962188989_n.jpg',
-            'secret project for/473051716_641773235182673_7365232309124631009_n.jpg',
-            'secret project for/473084751_1241394253620277_4689859554365862285_n.jpg',
-            'secret project for/473158770_1354761939276388_5274279448507837772_n.jpg',
-            'secret project for/473160182_1169288864766748_2465551162746259784_n.jpg',
-            'secret project for/473170411_468128569698139_359357638476497455_n.jpg',
-            'secret project for/473170411_468128569698139_359357638476497455_n.jpg',
-            'secret project for/473345058_589550433941719_1662626653166509351_n.jpg',
-            'secret project for/473354378_1697295210835720_106869351904571318_n (1).jpg',
-            'secret project for/473354378_1697295210835720_106869351904571318_n.jpg',
-            'secret project for/473375563_959479072388007_2345627324481050546_n.jpg',
-            'secret project for/473417145_1259360625127366_474492443450215469_n.jpg',
-            'secret project for/473444443_1251072152662142_1972086861222000836_n.jpg',
-            'secret project for/473631598_3076532122494314_4458419140420332268_n.jpg',
-            'secret project for/473636265_1116009449829692_5554587517575358860_n.jpg',
-            'secret project for/473647051_919271710275996_7383450750180259453_n.jpg',
-            'secret project for/473649378_1124239772237875_1175727166522609997_n.jpg',
-            'secret project for/473730840_4084808161750040_4659283869458251396_n.jpg',
-            'secret project for/473782711_1250035009434577_8341497438016275193_n.jpg',
-            'secret project for/473807648_1992096294606848_1577745155620826182_n.jpg ',
-            'secret project for/473797323_638388415530297_412800633257247236_n.jpg',
-            'secret project for/473808345_1135608724879537_3874742230181401297_n.jpg',
-            'secret project for/473823603_1913357499072731_7911066051572792263_n.jpg',
-            'secret project for/473898358_602559135856974_6636004816002121584_n.jpg',
-            'secret project for/473898358_629543856197324_3931041269361110881_n.jpg',
-            'secret project for/474077332_1361686094861489_515251861720580283_n.jpg',
-            'secret project for/474118603_1163743492033818_4981969686438369461_n.jpg',
-            'secret project for/474142065_1107925524394824_3094991868032486991_n.jpg',
-            'secret project for/474118603_1163743492033818_4981969686438369461_n.jpg',
-            'secret project for/474152305_637028742212677_5503834501990788118_n.jpg',
-            'secret project for/474155938_3988673281407811_3002578338899370168_n.jpg',
-            'secret project for/474160289_589506843965524_3675365016449250424_n.jpg',
-            'secret project for/474161678_9270640692956000_6625429292919929615_n (1).jpg',
-            'secret project for/474168584_2705717022933390_5221951445431741495_n.jpg',
-            'secret project for/474161678_9270640692956000_6625429292919929615_n.jpg',
-            'secret project for/474390209_966609341610853_4773373815636827697_n.jpg',
-            'secret project for/474615870_1129883888776782_3315053944851874450_n (1).jpg',
-            'secret project for/474615870_1129883888776782_3315053944851874450_n.jpg',
-            'secret project for/474615870_1861193177744048_1026700538298649116_n.jpg',
-            'secret project for/474615870_1861193177744048_1026700538298649116_n.jpg',
-            'secret project for/474745237_623882343470798_3773524905475430882_n.jpg',
-            'secret project for/474771815_1761066681357071_5597569382025522479_n.jpg',
-            'secret project for/474773579_928975982679537_1151562696149438745_n.jpg',
-            'secret project for/474771815_2083887018727647_635824044073281359_n.jpg',
-            'secret project for/474897658_1968341730244055_4326342707151620537_n.jpg',
-            'secret project for/474921907_929710572582468_6528524286017632139_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/357245918_751419786989707_1498815506532655800_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/361044464_974589953662721_3289962504816625553_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483716347_1681687849404549_7478633680418498495_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482939683_1199563195096839_6737949338541187819_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483792194_1702307897303054_720750197222812306_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483960673_1017368273204713_3885937030680609043_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483820976_477438048781091_6468793998470013666_n.jpg.',
+            'https://github.com/pogier/happy-birthday/raw/main/485261255_543958108746010_5483128468943646314_n.jpg.',
+            'https://github.com/pogier/happy-birthday/raw/main/385536933_273173532252312_9203653718120508350_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/421114599_401835482231131_7791129654652981035_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/440884640_295658116834579_8429973019000477111_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/440988588_815296477147777_1281145338116731120_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/453404233_481878594449877_7857376397168475065_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462556490_583529650889989_6460639195322390193_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462560302_1292957095240147_417661533735107777_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462560319_9193219004074774_5207974657406143567_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462566866_1109921370384112_4697317996582306313_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462575281_1256875708900944_5476309929034861173_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462577580_1906349099854681_1008127504246562277_n.jpg', 
+            'https://github.com/pogier/happy-birthday/raw/main/462583349_1123115659203507_3987538581293411601_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462585687_1134153315091992_8172865502773266063_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/464678140_9125006614227370_7005367073532055354_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/467715534_606219148569223_2467481328241082953_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/462585687_1134153315091992_8172865502773266063_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/467715534_606219148569223_2467481328241082953_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/467904212_583810940930103_6273312455331681449_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/471625881_1105925894082360_29364131060421395_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472169903_1143913780528563_1599877623325616752_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472169903_1143913780528563_1599877623325616752_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472300725_505146135936663_5759148937464726320_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472300725_604568518945350_7052964223078447212_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472300725_604568518945350_7052964223078447212_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472380056_618801134077963_3618235520098724738_n.jpg', 
+            'https://github.com/pogier/happy-birthday/raw/main/472396332_582091254536712_1038386393036983874_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472455339_1381026273262695_8564432980794568091_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/472915836_3010547422427289_5147638592962188989_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473051716_641773235182673_7365232309124631009_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473084751_1241394253620277_4689859554365862285_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473158770_1354761939276388_5274279448507837772_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473160182_1169288864766748_2465551162746259784_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473170411_468128569698139_359357638476497455_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473170411_468128569698139_359357638476497455_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473345058_589550433941719_1662626653166509351_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473354378_1697295210835720_106869351904571318_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473354378_1697295210835720_106869351904571318_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473375563_959479072388007_2345627324481050546_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473417145_1259360625127366_474492443450215469_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473444443_1251072152662142_1972086861222000836_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473631598_3076532122494314_4458419140420332268_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473636265_1116009449829692_5554587517575358860_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473647051_919271710275996_7383450750180259453_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473649378_1124239772237875_1175727166522609997_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473730840_4084808161750040_4659283869458251396_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473782711_1250035009434577_8341497438016275193_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473807648_1992096294606848_1577745155620826182_n.jpg ',
+            'https://github.com/pogier/happy-birthday/raw/main/473797323_638388415530297_412800633257247236_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473808345_1135608724879537_3874742230181401297_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473823603_1913357499072731_7911066051572792263_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473898358_602559135856974_6636004816002121584_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/473898358_629543856197324_3931041269361110881_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474077332_1361686094861489_515251861720580283_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474118603_1163743492033818_4981969686438369461_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474142065_1107925524394824_3094991868032486991_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474118603_1163743492033818_4981969686438369461_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474152305_637028742212677_5503834501990788118_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474155938_3988673281407811_3002578338899370168_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474160289_589506843965524_3675365016449250424_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474161678_9270640692956000_6625429292919929615_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474168584_2705717022933390_5221951445431741495_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474161678_9270640692956000_6625429292919929615_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474390209_966609341610853_4773373815636827697_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474615870_1129883888776782_3315053944851874450_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474615870_1129883888776782_3315053944851874450_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474615870_1861193177744048_1026700538298649116_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474615870_1861193177744048_1026700538298649116_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474745237_623882343470798_3773524905475430882_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474771815_1761066681357071_5597569382025522479_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474773579_928975982679537_1151562696149438745_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474771815_2083887018727647_635824044073281359_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474897658_1968341730244055_4326342707151620537_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474921907_929710572582468_6528524286017632139_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/474956198_1674480920149286_6823189413291721824_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475046305_8751999868258949_7073054396926719797_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475195954_1638056847149893_2397771624256398224_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475327515_638969338656018_2982165861460830212_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475435078_525017123342259_59025618001135239951_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475488699_636314265640793_6995413649548844680_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475583967_1547053722493947_1447869123808023773_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475884722_972617774252565_495502358783301512_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/475918910_593963106891653_1386860597347870772_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/476401698_667643599156012_554429210060414795_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/476965129_1383305432657429_732129398561360266_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/476965129_1383305432657429_732129398561360266_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/477053265_947434664181612_262848782425624665_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/479988478_1803012850518818_959865759363056952_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/480367159_2625171497672890_3185579454313622324_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/480443592_1177279600555922_1062092245618209891_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/480622569_4079002279048574_8503331260265684765_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/481622814_1802060413909231_89072374190866709_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482530011_1035468701971331_5476044302486253182_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482692228_597912556637328_6839908123579658145_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482755194_1474395670604631_4852671907638999523_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482762259_1456592485307452_6572836756807180141_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482812571_2177524506037301_7495095514179409630_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482907659_1168329174984859_4071582538696643060_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482913611_2665120810347895_2732266871234971218_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482914750_1568624647137165_2107589308734470832_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482939683_1199563195096839_6737949338541187819_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/482995281_608498795504940_197742005050911408_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483003872_1838657710290017_3051204451522211525_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483298838_1013777173944700_8458044306678254982_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483332756_521489644367798_1509670196387682809_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483316499_1022483576717888_2840579863596205333_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483356769_1205257984549772_8123483271403051641_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483367300_1315666836357062_8248779843923168292_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483533621_1199986834293727_9207805313144926295_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483542460_2049605908885690_5147456241280017540_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483564196_3302338226575183_7204657022619171928_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483661212_1369016270641015_5280702484568154926_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483691609_620610901135420_3116703843455494574_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483701596_696550706235457_7384442128072419684_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483708301_2077786152740042_4059773370866714860_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483716347_748200527537791_3709342605556970028_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483716347_1681687849404549_7478633680418498495_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483792194_1702307897303054_720750197222812306_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483796085_1908198589933801_2692963398889523455_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483820976_477438048781091_6468793998470013666_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483869173_535119642951127_7455159785231349433_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483960673_1017368273204713_3885937030680609043_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483966840_710999304943599_5383036128974570753_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483966875_532751502937002_8835177430324208886_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/483966875_532751502937002_8835177430324208886_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484162315_1358032041900797_7409406876848877885_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484164708_954716406868356_7081088417711431465_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484171397_1784589285419280_2465632297793618106_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484361890_1751686989088356_3720077359678478952_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484367524_1973098473528273_2136518160567596628_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484448530_1123574832911414_1371740544637547995_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484859459_1578657146154493_4305658548888194770_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/484821727_1001679814934883_4629874921343746826_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485261255_543958108746010_5483128468943646314_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485494725_1026487809354920_5470293117827196339_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485509040_692616300000877_2754202272850393958_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485591210_3974931512783425_6105331820512256543_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485591210_3974931512783425_6105331820512256543_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485891270_2324863094562619_2669900953121094968_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485905173_673678328458559_8068559262008105661_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/485944773_1146123980545839_4528005986253720066_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486038139_3068253316656910_1412761762340772322_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486066581_1309884496746138_9051714262939151720_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486257208_593468693748507_13773753221901059_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486117976_966377642319117_7533204389601495012_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486356391_1795935500972750_1944613859435503195_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486365951_1304400870646143_6042224252671839420_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486522039_1321809989084078_5199747075840958178_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486546945_483495731395639_4970400269124221721_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486547590_1159481572307461_5170552970219604103_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486553044_1027791805949813_3748391967479909718_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486560563_582549108134042_3862873967211150803_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486608341_963854759250533_2082948515950944669_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486616789_574143305056162_3655993774653536818_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486619380_646119474811747_5344117811253717266_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486718018_1187435019631545_1101767332578512082_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486748424_699117799294286_5956988549419151511_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486740120_3937795766437591_4141669382214465327_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486751439_528811816938059_1730586831763579260_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/486801088_1172755604299505_7880563891520781349_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487039157_616419644731186_7034426138803406840_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487042720_1211342247276758_1678081349327412329_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487044315_3875738609355067_3757648682747741254_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487050982_1210476067310269_2730884208668278252_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487060240_3901280546754948_8472243910798740615_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487067512_1048766493974598_7852808581100993220_n (1).jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487067512_1048766493974598_7852808581100993220_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487088005_563111300145877_6548162079075292297_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487128921_4018023301852787_369184996238818672_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487146853_1614449279255034_7404088517970138724_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487364005_1296826401390279_4871122598684998475_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487445460_2137377546702183_5815523135898038705_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487452700_9617572061635397_7707147641364970671_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487483323_1402181037440185_5944977376521227231_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487808805_1313476643059088_3101387556102468929_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487817530_689667026751057_5683362634865015348_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487832345_1513880839995623_318584915891657101_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487840856_873325058253551_1060016861893554207_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487844453_536713045801113_6309787599878490672_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487860286_677540408096386_177578300793896189_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487860286_1224389875868466_1381698356860424216_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487871123_1363612081352875_3845072436361164413_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487871123_1507349440225666_8741431924246251558_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/487876368_1738382807026332_5950269872705124805_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/488164624_1716050208994090_7659817132260980355_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/488189802_648861144794766_3069692195066490875_n.jpg',
+            'https://github.com/pogier/happy-birthday/raw/main/488189802_2775129386002630_931502133385171322_n.jpg',
          
 
 
            
         ];
+
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
+        
+
+        document.addEventListener('click', function() {
+            if (!isMusicPlaying) {
+                bgMusic.volume = 0.4; 
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch(error => {
+                    console.log("Autoplay was prevented. Please click the music button to play.");
+                });
+            }
+        }, { once: true }); 
+        
        
+        musicControl.addEventListener('click', function() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                bgMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+        
         
         document.body.addEventListener('click', function(e) {
-      
-            if (e.target.classList.contains('displayed-photo')) return;
+            if (e.target.classList.contains('displayed-photo') || 
+                e.target.classList.contains('music-control') ||
+                e.target.closest('.music-control')) return;
             
-        
             const xPos = Math.random() * (window.innerWidth - 300);
             const yPos = Math.random() * (window.innerHeight - 200);
             
-           
             const rotation = -15 + Math.random() * 30;
             
-     
             const randomIndex = Math.floor(Math.random() * photoUrls.length);
             const randomPhoto = photoUrls[randomIndex];
-            
             
             const photoElement = document.createElement('img');
             photoElement.src = randomPhoto;
@@ -212,7 +388,6 @@
             
             document.body.appendChild(photoElement);
             
-          
             let isDragging = false;
             let offsetX, offsetY;
             
